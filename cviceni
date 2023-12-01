@@ -10,3 +10,15 @@ FILTER(
 data[rok] = MAX(data[rok]) - 1
 && data[lokalita] = MAX(data[lokalita])
 ),data[srazky])
+
+___________________________________________
+
+17 byla nejteplejsi lokalita = 
+IF(
+-- maximalni teplota v roce  bez ohledu na lokality
+MAXX(FILTER(ALL(data),
+data[rok] = MAX(data[rok])),
+data[maximalni_teplota])
+=
+-- maximalni teplotu v roce a lokalite
+MAX(data[maximalni_teplota]),"ANO","NE")
