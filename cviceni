@@ -30,5 +30,5 @@ IF(
 SUM(data[srazky])
 -
 -- suma srazek v predchozim roce
-SUMX(FILTER(ALL(data),data[rok] = MAX(data[rok]) -1),
+SUMX(FILTER(ALL(data),data[rok] = MAX(data[rok]) -1 && data[mesic] = MAX(data[mesic])),
 data[srazky])>0,"BLUE","RED")
