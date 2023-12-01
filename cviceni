@@ -1,0 +1,12 @@
+16 suma srazek mezirocne = 
+
+-- suma srazek v danem roce a dane lokalite
+SUM(data[srazky])
+- 
+-- suma srazek v dane lokalite v predchozim roce
+sumx(
+FILTER(
+    ALL(data),
+data[rok] = MAX(data[rok]) - 1
+&& data[lokalita] = MAX(data[lokalita])
+),data[srazky])
