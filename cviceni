@@ -32,3 +32,13 @@ SUM(data[srazky])
 -- suma srazek v predchozim roce
 SUMX(FILTER(ALL(data),data[rok] = MAX(data[rok]) -1 && data[mesic] = MAX(data[mesic])),
 data[srazky])>0,"BLUE","RED")
+_________________________________________________
+
+21 pf nazev tabulky = 
+SWITCH(TRUE(),
+HASONEFILTER(data[lokalita]),
+"Vývoj maximálních srážek v lokalitě "&SELECTEDVALUE(data[lokalita]),
+ISFILTERED(data[lokalita]),
+"Vývoj maximálních srážek v lokalitách "&
+CONCATENATEX(VALUES(data[lokalita]),data[lokalita],", "),
+"Vývoj maximálních srážek napříč lokalitami")
